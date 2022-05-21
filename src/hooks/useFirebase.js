@@ -31,7 +31,7 @@ const useFirebase = () => {
     // }
 
 
-    const signInUsingGoogle = () => {
+    const signInUsingGoogle = (location, navigate) => {
         setIsLoading(true);
         const googleProvider = new GoogleAuthProvider();
 
@@ -40,7 +40,7 @@ const useFirebase = () => {
                 setUser(result.user);
                 setAuthError('');
                 const destination = location?.state?.from || '/';
-                Navigate(destination);
+                navigate(destination);
             }).catch((error) => {
                 setAuthError(error.message);
             }).finally(() => setIsLoading(false));
